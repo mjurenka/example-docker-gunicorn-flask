@@ -5,4 +5,4 @@ ADD requirements.txt /app
 RUN pip3 install -r requirements.txt
 ADD . /app
 EXPOSE 5000
-ENTRYPOINT ["python", "app/app.py"]
+ENTRYPOINT ["gunicorn", "--config", "gunicorn_config.py", "app.wsgi:app"]
